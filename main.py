@@ -6,7 +6,7 @@ import pandas as pd
 def verificar_login(usuario, senha):
     # Defina suas credenciais
     usuario_correto = "lets"
-    senha_correta = "lets@2025@"
+    senha_correta = "lets@2025"
     
     if usuario == usuario_correto and senha == senha_correta:
         return True
