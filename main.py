@@ -108,25 +108,33 @@ else:
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        titulo_input = st.multiselect(
-            "Selecione ou pesquise o nome do livro", placeholder="Escolha uma opção",
-            options=sorted(df['TÍTULO'].unique())  # Ordena os títulos
-        )
+    titulo_input = st.multiselect(
+        "Selecione ou pesquise o nome do livro", 
+        placeholder="Escolha uma opção",
+        options=sorted(df['TÍTULO'].unique()),  # Ordena os títulos
+        default=[]  # Garante que nenhuma opção esteja selecionada por padrão
+    )
 
-    with col2:
-        autor_input = st.multiselect(
-            "Selecione os autores", options=sorted(df['AUTOR'].unique())  # Inclui a opção vazia
-        )
+with col2:
+    autor_input = st.multiselect(
+        "Selecione os autores", 
+        options=sorted(df['AUTOR'].unique()),  # Inclui a opção vazia
+        default=[]  # Garante que nenhuma opção esteja selecionada por padrão
+    )
 
-    with col3:
-        editora_input = st.multiselect(
-            "Selecione as editoras", options=sorted(df['EDITORA'].unique())  # Inclui a opção vazia
-        )
+with col3:
+    editora_input = st.multiselect(
+        "Selecione as editoras", 
+        options=sorted(df['EDITORA'].unique()),  # Inclui a opção vazia
+        default=[]  # Garante que nenhuma opção esteja selecionada por padrão
+    )
 
-    with col4:
-        status_input = st.multiselect(
-            "Selecione os status de leitura", options=sorted(df['STATUS DE LEITURA'].astype(str).unique())  # Inclui a opção vazia
-        )
+with col4:
+    status_input = st.multiselect(
+        "Selecione os status de leitura", 
+        options=sorted(df['STATUS DE LEITURA'].astype(str).unique()),  # Inclui a opção vazia
+        default=[]  # Garante que nenhuma opção esteja selecionada por padrão
+    )
 
     # Aplicar filtro de título
     if titulo_input:
