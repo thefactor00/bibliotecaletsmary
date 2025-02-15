@@ -18,8 +18,6 @@ st.set_page_config(page_title="Lets Mary Biblioteca", page_icon="📚", layout="
 
 # Tela de Login
 if 'logado' not in st.session_state or not st.session_state.logado:
-  
-
     # Formulário de login
     st.markdown('<div class="login-container">', unsafe_allow_html=True)
     st.markdown('<h2>Login</h2>', unsafe_allow_html=True)
@@ -97,7 +95,6 @@ else:
         </style>
     """, unsafe_allow_html=True)
     
-
     # Texto de boas-vindas com fontes refinadas
     st.markdown('<h1>Bem-vindo(a) à biblioteca da Lets Mary</h1>', unsafe_allow_html=True)
     st.markdown('<h2>Aqui você encontra toda coleção da Leticia Ribeiro</h2>', unsafe_allow_html=True)
@@ -118,17 +115,17 @@ else:
 
     with col2:
         autor_input = st.multiselect(
-            "Selecione os autores", options=[""] + sorted(df['AUTOR'].unique())  # Inclui a opção vazia
+            "Selecione os autores", options=sorted(df['AUTOR'].unique())  # Inclui a opção vazia
         )
 
     with col3:
         editora_input = st.multiselect(
-            "Selecione as editoras", options=[""] + sorted(df['EDITORA'].unique())  # Inclui a opção vazia
+            "Selecione as editoras", options=sorted(df['EDITORA'].unique())  # Inclui a opção vazia
         )
 
     with col4:
         status_input = st.multiselect(
-            "Selecione os status de leitura", options=[""] + sorted(df['STATUS DE LEITURA'].unique())  # Inclui a opção vazia
+            "Selecione os status de leitura", options=sorted(df['STATUS DE LEITURA'].astype(str).unique())  # Inclui a opção vazia
         )
 
     # Aplicar filtro de título
@@ -196,7 +193,12 @@ else:
                           <strong>📕 {status_leitura}</strong>
                         </div>
                       """
-                        else:
+                        elif status_leitura.lower() == 'lendo':  # Para "Lendo", cor azul
+                            card_html += f"""<div style='background-color: #007bff; border: 1px solid #007bff; color: #ffffff; padding: 1px; border-radius: 5px 5px 0px 0px; margin-bottom: 5px;'>
+                          <strong>📘 {status_leitura}</strong>
+                        </div>
+                      """
+                        else:  # Para outros status, cor verde
                             card_html += f"""<div style='background-color: #45d0c1; border: 1px solid #45d0c1; color: #ffffff; padding: 1px; border-radius: 5px 5px 0px 0px; margin-bottom: 5px;'>
                           <strong>📗 {status_leitura}</strong>
                         </div>
