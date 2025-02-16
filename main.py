@@ -111,7 +111,7 @@ else:
     titulo_input = st.multiselect(
         "Selecione ou pesquise o nome do livro", 
         options=sorted(df['TÍTULO'].unique()),  # Ordena os títulos
-        default=[]  # Garante que nenhuma opção esteja selecionada por padrão
+        default=[]  # Nenhuma opção selecionada por padrão
     )
 with col2:
     autor_input = st.multiselect(
