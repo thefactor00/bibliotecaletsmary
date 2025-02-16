@@ -159,9 +159,11 @@ with col4:
     col1, col2, col3 = st.columns([1, 4, 1])
 
     with col1:
-        if st.button("⬅️ Anterior") and st.session_state.page > 1:
-            st.session_state.page -= 1
-
+    titulo_input = st.multiselect(
+        "Selecione ou pesquise o nome do livro", 
+        options=sorted(df['TÍTULO'].unique()),  # Ordena os títulos
+        default=[]  # Nenhuma opção selecionada por padrão
+    )
     with col3:
         if st.button("➡️ Próximo") and st.session_state.page < total_pages:
             st.session_state.page += 1
