@@ -121,6 +121,7 @@ st.markdown('<h1>Bem-vindo(a) à biblioteca da Lets Mary</h1>', unsafe_allow_htm
 st.markdown('<h2>Aqui você encontra toda coleção da Leticia Ribeiro</h2>', unsafe_allow_html=True)
 
 st.divider()
+
     # Carregar o DataFrame
     df = pd.read_excel('dados - Copia.xlsx', sheet_name='TODOS OS VOLUMES')
 
