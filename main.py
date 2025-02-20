@@ -122,33 +122,32 @@ st.markdown('<h2>Aqui você encontra toda coleção da Leticia Ribeiro</h2>', un
 
 st.divider()
 
-    # Carregar o DataFrame
+# Carregar o DataFrame
 df = pd.read_excel('dados - Copia.xlsx', sheet_name='TODOS OS VOLUMES')
 
-    # Filtros de pesquisa na mesma linha
+# Filtros de pesquisa na mesma linha
 col1, col2, col3, col4 = st.columns(4)
 
-    with col1:
-        titulo_input = st.multiselect(
-            "Selecione ou pesquise o nome do livro", placeholder="Escolha uma opção",
-            options=sorted(df['TÍTULO'].unique())  # Ordena os títulos
-        )
+with col1:
+    titulo_input = st.multiselect(
+        "Selecione ou pesquise o nome do livro", placeholder="Escolha uma opção",
+        options=sorted(df['TÍTULO'].unique())  # Ordena os títulos
+    )
 
-    with col2:
-        autor_input = st.multiselect(
-            "Selecione os autores", options=sorted(df['AUTOR'].unique())  # Inclui a opção vazia
-        )
+with col2:
+    autor_input = st.multiselect(
+        "Selecione os autores", options=sorted(df['AUTOR'].unique())  # Inclui a opção vazia
+    )
 
-    with col3:
-        editora_input = st.multiselect(
-            "Selecione as editoras", options=sorted(df['EDITORA'].unique())  # Inclui a opção vazia
-        )
+with col3:
+    editora_input = st.multiselect(
+        "Selecione as editoras", options=sorted(df['EDITORA'].unique())  # Inclui a opção vazia
+    )
 
-    with col4:
-        status_input = st.multiselect(
-            "Selecione os status de leitura", options=sorted(df['STATUS DE LEITURA'].astype(str).unique())  # Inclui a opção vazia
-        )
-
+with col4:
+    status_input = st.multiselect(
+        "Selecione os status de leitura", options=sorted(df['STATUS DE LEITURA'].astype(str).unique())  # Inclui a opção vazia
+    )
     # Aplicar filtro de título
     if titulo_input:
         df = df[df['TÍTULO'].isin(titulo_input)]
