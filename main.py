@@ -62,69 +62,67 @@ def aplicar_tema():
     )
 
 aplicar_tema()
-    
-   # Estilo CSS para deixar o front mais refinado
-    st.markdown("""
-        <style>
-            .reportview-container { margin-top: -2em; }
-            #MainMenu {visibility: hidden;}
-            .stDeployButton {display:none;}
-            footer {visibility: hidden;}
-            #stDecoration {display:none;}
 
-            /* Estilo do título */
-            h1 {
-                font-family: 'Helvetica Neue', sans-serif;
-                font-weight: lighter;
-                font-size: 40px;
-                color: #fff;  /* Fonte branca */
-                text-align: center;
-                margin-bottom: 10px;
-                pointer-events: none; /* Torna o título não clicável */
-            }
+# Estilo CSS para deixar o front mais refinado
+st.markdown("""
+    <style>
+        .reportview-container { margin-top: -2em; }
+        #MainMenu {visibility: hidden;}
+        .stDeployButton {display:none;}
+        footer {visibility: hidden;}
+        #stDecoration {display:none;}
 
-            /* Estilo do subtítulo */
-            h2 {
-                font-family: 'Helvetica Neue', sans-serif;
-                font-weight: lighter;
-                font-size: 24px;
-                color: #fff;  /* Fonte branca */
-                text-align: center;
-                margin-top: 0;
-                margin-bottom: 20px;
-                pointer-events: none; /* Torna o título não clicável */
-            }
+        /* Estilo do título */
+        h1 {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: lighter;
+            font-size: 40px;
+            color: #fff;  /* Fonte branca */
+            text-align: center;
+            margin-bottom: 10px;
+            pointer-events: none; /* Torna o título não clicável */
+        }
 
-            /* Estilo geral do texto */
-            .stMarkdown {
-                font-family: 'Helvetica Neue', sans-serif;
-                font-weight: lighter;
-                color: #fff;  /* Fonte branca */
-            }
+        /* Estilo do subtítulo */
+        h2 {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: lighter;
+            font-size: 24px;
+            color: #fff;  /* Fonte branca */
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+            pointer-events: none; /* Torna o título não clicável */
+        }
 
-            /* Estilo do botão */
-            .stButton > button {
-                background-color: #45d0c1;
-                color: white;
-                padding: 10px 20px;
-                border: none;
-                cursor: pointer;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 14px;
-                border-radius: 4px;
-            }
+        /* Estilo geral do texto */
+        .stMarkdown {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: lighter;
+            color: #fff;  /* Fonte branca */
+        }
 
-        </style>
-    """, unsafe_allow_html=True)
-    
-    # Texto de boas-vindas com fontes refinadas
-    st.markdown('<h1>Bem-vindo(a) à biblioteca da Lets Mary</h1>', unsafe_allow_html=True)
-    st.markdown('<h2>Aqui você encontra toda coleção da Leticia Ribeiro</h2>', unsafe_allow_html=True)
+        /* Estilo do botão */
+        .stButton > button {
+            background-color: #45d0c1;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
-    st.divider()
+# Texto de boas-vindas com fontes refinadas
+st.markdown('<h1>Bem-vindo(a) à biblioteca da Lets Mary</h1>', unsafe_allow_html=True)
+st.markdown('<h2>Aqui você encontra toda coleção da Leticia Ribeiro</h2>', unsafe_allow_html=True)
 
+st.divider()
     # Carregar o DataFrame
     df = pd.read_excel('dados - Copia.xlsx', sheet_name='TODOS OS VOLUMES')
 
