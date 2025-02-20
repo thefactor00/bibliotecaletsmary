@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image
 import pandas as pd
+import streamlit as st
 
 # Função para autenticar o login
 def verificar_login(usuario, senha):
@@ -36,8 +37,6 @@ def aplicar_tema():
             }
             /* Ajusta as caixas de entrada para fundo branco e texto preto */
             input, textarea, select {
-            /* Ajustando os inputs */
-            input[type="text"], input[type="password"], textarea, select {
                 background-color: #ffffff !important;
                 color: #000000 !important;
                 border: 1px solid #ccc !important;
@@ -47,13 +46,26 @@ def aplicar_tema():
             input::placeholder, textarea::placeholder {
                 color: #666 !important;
             }
-            /* Ajustando os dropdowns (multiselect) */
+            /* Ajustando os dropdowns (selectbox, multiselect) */
+            /* Para o selectbox */
             [data-baseweb="select"] > div {
                 background-color: #ffffff !important;
                 color: #000000 !important;
                 border: 1px solid #ccc !important;
                 border-radius: 5px !important;
                 padding: 5px !important;
+            }
+            /* Para os filtros de multiselect */
+            .stMultiSelect div[data-baseweb="select"] {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                border: 1px solid #ccc !important;
+                border-radius: 5px !important;
+                padding: 5px !important;
+            }
+            /* Alterando o texto dos filtros */
+            .stSelectbox label, .stMultiSelect label {
+                color: #333 !important;
             }
         </style>
         """,
