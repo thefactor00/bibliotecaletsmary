@@ -37,6 +37,8 @@ def aplicar_tema():
             }
             /* Ajusta as caixas de entrada para fundo branco e texto preto */
             input, textarea, select {
+            /* Ajustando os inputs */
+            input[type="text"], input[type="password"], textarea, select {
                 background-color: #ffffff !important;
                 color: #000000 !important;
                 border: 1px solid #ccc !important;
@@ -46,8 +48,7 @@ def aplicar_tema():
             input::placeholder, textarea::placeholder {
                 color: #666 !important;
             }
-            /* Ajustando os dropdowns (selectbox, multiselect) */
-            /* Para o selectbox */
+            /* Ajustando os dropdowns (multiselect) */
             [data-baseweb="select"] > div {
                 background-color: #ffffff !important;
                 color: #000000 !important;
@@ -55,48 +56,12 @@ def aplicar_tema():
                 border-radius: 5px !important;
                 padding: 5px !important;
             }
-            /* Para os filtros de multiselect */
-            .stMultiSelect div[data-baseweb="select"] {
-                background-color: #ffffff !important;
-                color: #000000 !important;
-                border: 1px solid #ccc !important;
-                border-radius: 5px !important;
-                padding: 5px !important;
-            }
-            /* Alterando o texto dos filtros */
-            .stSelectbox label, .stMultiSelect label {
-                color: #333 !important;
-            }
         </style>
         """,
         unsafe_allow_html=True
     )
 
 aplicar_tema()
-
-# Tela de Login (Exemplo)
-if 'logado' not in st.session_state or not st.session_state.logado:
-    st.markdown('<h2>Login</h2>', unsafe_allow_html=True)
-    usuario = st.text_input("Usuário", placeholder="Digite seu usuário", key="usuario")
-    senha = st.text_input("Senha", type="password", placeholder="Digite sua senha", key="senha")
-    if st.button("Entrar"):
-        # Lógica de autenticação
-        if usuario == "lets" and senha == "lets@2025":
-            st.session_state.logado = True
-            st.success("Login realizado com sucesso!")
-            st.rerun()
-        else:
-            st.error("Credenciais inválidas. Tente novamente.")
-else:
-    st.write("Bem-vindo à Lets Mary Biblioteca!")
-
-    # Exemplos de filtros
-    filtro1 = st.selectbox("Selecione uma opção", ["Opção 1", "Opção 2", "Opção 3"])
-    filtro2 = st.multiselect("Escolha várias opções", ["Opção A", "Opção B", "Opção C"])
-
-    st.write(f"Você escolheu: {filtro1}")
-    st.write(f"Você selecionou: {filtro2}")
-    
     # Captura o evento de pressionamento da tecla Enter
     if st.button("Entrar") or (usuario and senha and st.session_state.usuario and st.session_state.senha):
         if verificar_login(usuario, senha):
