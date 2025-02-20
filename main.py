@@ -35,6 +35,7 @@ def aplicar_tema():
         """,
         unsafe_allow_html=True
     )
+aplicar_tema()
 
 # Tela de Login
 if 'logado' not in st.session_state or not st.session_state.logado:
