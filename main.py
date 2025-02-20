@@ -34,12 +34,21 @@ def aplicar_tema():
                 border-radius: 5px !important;
                 border: none !important;
             }
+            /* Ajusta as caixas de entrada para fundo branco e texto preto */
+            input, textarea, select {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                border: 1px solid #ccc !important;
+                border-radius: 5px !important;
+                padding: 8px !important;
+            }
+            input::placeholder, textarea::placeholder {
+                color: #666 !important;
+            }
         </style>
         """,
         unsafe_allow_html=True
     )
-
-aplicar_tema()
 
 aplicar_tema()
 
