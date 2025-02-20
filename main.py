@@ -16,7 +16,6 @@ def verificar_login(usuario, senha):
 # Configuração da página
 st.set_page_config(page_title="Lets Mary Biblioteca", page_icon="📚", layout="wide")
 
-# Aplicar tema branco fixo
 def aplicar_tema():
     st.markdown(
         """
@@ -28,8 +27,6 @@ def aplicar_tema():
         """,
         unsafe_allow_html=True
     )
-
-aplicar_tema()
 
 # Tela de Login
 if 'logado' not in st.session_state or not st.session_state.logado:
