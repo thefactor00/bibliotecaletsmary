@@ -16,27 +16,19 @@ def verificar_login(usuario, senha):
 # Configuração da página
 st.set_page_config(page_title="Lets Mary Biblioteca", page_icon="📚", layout="wide")
 
-# Aplicar tema branco com fontes pretas
+#Aplicar tema branco
+
 def aplicar_tema():
     st.markdown(
         """
         <style>
-            body, .reportview-container { background-color: #ffffff !important; color: #000000 !important; }
-            .stMarkdown, h1, h2, p, div, .stButton > button, .stTextInput, .stSelectbox, .stMultiSelect, .stTable, .stDataFrame, label {
-                color: #000000 !important;
-            }
+            body { background-color: #ffffff !important; color: #000000 !important; }
+            .stMarkdown, h1, h2, p, div, .stButton > button { color: #000000 !important; }
             .stButton > button { background-color: #45d0c1; color: white; }
-            .stTextInput, .stSelectbox, .stMultiSelect {
-                background-color: #ffffff !important;
-                border: 1px solid #000000 !important;
-                color: #000000 !important;
-            }
         </style>
         """,
         unsafe_allow_html=True
     )
-aplicar_tema()
-
 # Tela de Login
 if 'logado' not in st.session_state or not st.session_state.logado:
     # Formulário de login
