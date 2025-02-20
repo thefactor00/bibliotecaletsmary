@@ -126,7 +126,7 @@ st.divider()
 df = pd.read_excel('dados - Copia.xlsx', sheet_name='TODOS OS VOLUMES')
 
     # Filtros de pesquisa na mesma linha
-    col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3, col4 = st.columns(4)
 
     with col1:
         titulo_input = st.multiselect(
