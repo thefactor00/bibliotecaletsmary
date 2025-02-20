@@ -62,34 +62,8 @@ def aplicar_tema():
     )
 
 aplicar_tema()
-
-    # Tela de Login (Exemplo)
-if 'logado' not in st.session_state or not st.session_state.logado:
-    st.markdown('<h2>Login</h2>', unsafe_allow_html=True)
-    usuario = st.text_input("Usuário", placeholder="Digite seu usuário", key="usuario")
-    senha = st.text_input("Senha", type="password", placeholder="Digite sua senha", key="senha")
     
-    # A indentação estava errada aqui. Removi a indentação extra para o código funcionar corretamente.
-    if st.button("Entrar"):
-        # Lógica de autenticação
-        if usuario == "lets" and senha == "lets@2025":
-            st.session_state.logado = True
-            st.success("Login realizado com sucesso!")
-            st.rerun()
-        else:
-            st.error("Credenciais inválidas. Tente novamente.")
-else:
-    st.write("Bem-vindo à Lets Mary Biblioteca!")
-
-    # Exemplos de filtros
-    filtro1 = st.selectbox("Selecione uma opção", ["Opção 1", "Opção 2", "Opção 3"])
-    filtro2 = st.multiselect("Escolha várias opções", ["Opção A", "Opção B", "Opção C"])
-
-    st.write(f"Você escolheu: {filtro1}")
-    st.write(f"Você selecionou: {filtro2}")
-    # Após o login bem-sucedido, mostra o conteúdo da página
-
-    # Estilo CSS para deixar o front mais refinado
+   # Estilo CSS para deixar o front mais refinado
     st.markdown("""
         <style>
             .reportview-container { margin-top: -2em; }
