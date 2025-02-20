@@ -1,14 +1,13 @@
 import streamlit as st
 from PIL import Image
 import pandas as pd
-import streamlit as st
 
 # Função para autenticar o login
 def verificar_login(usuario, senha):
     # Defina suas credenciais
     usuario_correto = "lets"
     senha_correta = "lets@2025"
-    
+
     if usuario == usuario_correto and senha == senha_correta:
         return True
     else:
@@ -17,43 +16,14 @@ def verificar_login(usuario, senha):
 # Configuração da página
 st.set_page_config(page_title="Lets Mary Biblioteca", page_icon="📚", layout="wide")
 
-# # Aplicar tema branco fixo
+# Aplicar tema branco fixo
 def aplicar_tema():
     st.markdown(
         """
         <style>
-            html, body, [data-testid="stAppViewContainer"], [data-testid="stHeader"], [data-testid="stSidebar"] {
-                background-color: #ffffff !important;
-                color: #000000 !important;
-            }
-            h1, h2, h3, h4, h5, h6, p, div, span, label {
-                color: #000000 !important;
-            }
-            .stButton > button {
-                background-color: #45d0c1 !important;
-                color: white !important;
-                border-radius: 5px !important;
-                border: none !important;
-            }
-            /* Ajustando os inputs */
-            input[type="text"], input[type="password"], textarea, select {
-                background-color: #ffffff !important;
-                color: #000000 !important;
-                border: 1px solid #ccc !important;
-                border-radius: 5px !important;
-                padding: 8px !important;
-            }
-            input::placeholder, textarea::placeholder {
-                color: #666 !important;
-            }
-            /* Ajustando os dropdowns (multiselect) */
-            [data-baseweb="select"] > div {
-                background-color: #ffffff !important;
-                color: #000000 !important;
-                border: 1px solid #ccc !important;
-                border-radius: 5px !important;
-                padding: 5px !important;
-            }
+            body { background-color: #ffffff !important; color: #000000 !important; }
+            .stMarkdown, h1, h2, p, div { color: #000000 !important; }
+            .stButton > button { background-color: #45d0c1; color: white; }
         </style>
         """,
         unsafe_allow_html=True
@@ -61,93 +31,118 @@ def aplicar_tema():
 
 aplicar_tema()
 
-# Estilo CSS para deixar o front mais refinado
-st.markdown("""
-    <style>
-        .reportview-container { margin-top: -2em; }
-        #MainMenu {visibility: hidden;}
-        .stDeployButton {display:none;}
-        footer {visibility: hidden;}
-        #stDecoration {display:none;}
+# Tela de Login
+if 'logado' not in st.session_state or not st.session_state.logado:
+    # Formulário de login
+    st.markdown('<div class="login-container">', unsafe_allow_html=True)
+    st.markdown('<h2>Login</h2>', unsafe_allow_html=True)
 
-        /* Estilo do título */
-        h1 {
-            font-family: 'Helvetica Neue', sans-serif;
-            font-weight: lighter;
-            font-size: 40px;
-            color: #fff;  /* Fonte branca */
-            text-align: center;
-            margin-bottom: 10px;
-            pointer-events: none; /* Torna o título não clicável */
-        }
+    usuario = st.text_input("Usuário", placeholder="Digite seu usuário", key="usuario")
+    senha = st.text_input("Senha", type="password", placeholder="Digite sua senha", key="senha")
 
-        /* Estilo do subtítulo */
-        h2 {
-            font-family: 'Helvetica Neue', sans-serif;
-            font-weight: lighter;
-            font-size: 24px;
-            color: #fff;  /* Fonte branca */
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 20px;
-            pointer-events: none; /* Torna o título não clicável */
-        }
+    # Captura o evento de pressionamento da tecla Enter
+    if st.button("Entrar") or (usuario and senha and st.session_state.usuario and st.session_state.senha):
+        if verificar_login(usuario, senha):
+            st.session_state.logado = True
+            st.success("Login realizado com sucesso!")
+            st.rerun()  # Recarrega a página para redirecionar
+        else:
+            st.error("Credenciais inválidas. Tente novamente.")
 
-        /* Estilo geral do texto */
-        .stMarkdown {
-            font-family: 'Helvetica Neue', sans-serif;
-            font-weight: lighter;
-            color: #fff;  /* Fonte branca */
-        }
+    st.markdown('</div>', unsafe_allow_html=True)
 
-        /* Estilo do botão */
-        .stButton > button {
-            background-color: #45d0c1;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 14px;
-            border-radius: 4px;
-        }
-    </style>
-""", unsafe_allow_html=True)
+else:
+    # Após o login bem-sucedido, mostra o conteúdo da página
 
-# Texto de boas-vindas com fontes refinadas
-st.markdown('<h1>Bem-vindo(a) à biblioteca da Lets Mary</h1>', unsafe_allow_html=True)
-st.markdown('<h2>Aqui você encontra toda coleção da Leticia Ribeiro</h2>', unsafe_allow_html=True)
+    # Estilo CSS para deixar o front mais refinado
+    st.markdown("""
+        <style>
+            .reportview-container { margin-top: -2em; }
+            #MainMenu {visibility: hidden;}
+            .stDeployButton {display:none;}
+            footer {visibility: hidden;}
+            #stDecoration {display:none;}
 
-st.divider()
+            /* Estilo do título */
+            h1 {
+                font-family: 'Helvetica Neue', sans-serif;
+                font-weight: lighter;
+                font-size: 40px;
+                color: #fff;  /* Fonte branca */
+                text-align: center;
+                margin-bottom: 10px;
+                pointer-events: none; /* Torna o título não clicável */
+            }
 
-# Carregar o DataFrame
-df = pd.read_excel('dados - Copia.xlsx', sheet_name='TODOS OS VOLUMES')
+            /* Estilo do subtítulo */
+            h2 {
+                font-family: 'Helvetica Neue', sans-serif;
+                font-weight: lighter;
+                font-size: 24px;
+                color: #fff;  /* Fonte branca */
+                text-align: center;
+                margin-top: 0;
+                margin-bottom: 20px;
+                pointer-events: none; /* Torna o título não clicável */
+            }
 
-# Filtros de pesquisa na mesma linha
-col1, col2, col3, col4 = st.columns(4)
+            /* Estilo geral do texto */
+            .stMarkdown {
+                font-family: 'Helvetica Neue', sans-serif;
+                font-weight: lighter;
+                color: #fff;  /* Fonte branca */
+            }
 
-with col1:
-    titulo_input = st.multiselect(
-        "Selecione ou pesquise o nome do livro", placeholder="Escolha uma opção",
-        options=sorted(df['TÍTULO'].unique())  # Ordena os títulos
-    )
+            /* Estilo do botão */
+            .stButton > button {
+                background-color: #45d0c1;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 14px;
+                border-radius: 4px;
+            }
 
-with col2:
-    autor_input = st.multiselect(
-        "Selecione os autores", options=sorted(df['AUTOR'].unique())  # Inclui a opção vazia
-    )
+        </style>
+    """, unsafe_allow_html=True)
 
-with col3:
-    editora_input = st.multiselect(
-        "Selecione as editoras", options=sorted(df['EDITORA'].unique())  # Inclui a opção vazia
-    )
+    # Texto de boas-vindas com fontes refinadas
+    st.markdown('<h1>Bem-vindo(a) à biblioteca da Lets Mary</h1>', unsafe_allow_html=True)
+    st.markdown('<h2>Aqui você encontra toda coleção da Leticia Ribeiro</h2>', unsafe_allow_html=True)
 
-with col4:
-    status_input = st.multiselect(
-        "Selecione os status de leitura", options=sorted(df['STATUS DE LEITURA'].astype(str).unique())  # Inclui a opção vazia
-    )
+    st.divider()
+
+    # Carregar o DataFrame
+    df = pd.read_excel('dados - Copia.xlsx', sheet_name='TODOS OS VOLUMES')
+
+    # Filtros de pesquisa na mesma linha
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+        titulo_input = st.multiselect(
+            "Selecione ou pesquise o nome do livro", placeholder="Escolha uma opção",
+            options=sorted(df['TÍTULO'].unique())  # Ordena os títulos
+        )
+
+    with col2:
+        autor_input = st.multiselect(
+            "Selecione os autores", options=sorted(df['AUTOR'].unique())  # Inclui a opção vazia
+        )
+
+    with col3:
+        editora_input = st.multiselect(
+            "Selecione as editoras", options=sorted(df['EDITORA'].unique())  # Inclui a opção vazia
+        )
+
+    with col4:
+        status_input = st.multiselect(
+            "Selecione os status de leitura", options=sorted(df['STATUS DE LEITURA'].astype(str).unique())  # Inclui a opção vazia
+        )
+
     # Aplicar filtro de título
     if titulo_input:
         df = df[df['TÍTULO'].isin(titulo_input)]
@@ -204,7 +199,7 @@ with col4:
                     card_html = f"""
                     <div style="border: 1px solid #ddd; padding: 10px; border-radius: 5px; margin-bottom: 10px; height: auto; text-align: center;">
                     """
-                    
+
                     # Exibir status de leitura (faixa de "Livro Disponível")
                     status_leitura = row[1]['STATUS DE LEITURA']
                     if status_leitura:  # Verifica se existe algum valor na coluna
@@ -227,7 +222,7 @@ with col4:
                     card_html += f"""
                     <img src="{row[1]['LINK DA IMAGEM']}" style="width: 200px; height: auto; display: block; margin-left: auto; margin-right: auto;"/>
                     """
-                    
+
                     # Título, Autor, Editora, Código
                     card_html += f"""
                     <h4 style="color:#ffffff; margin: 5px 0; font-size: 18px; font-weight: bold; text-align: center; color: #ffffff; font-family: Arial, sans-serif; text-transform: uppercase; pointer-events: none;">{row[1]['TÍTULO']}</h4>
