@@ -55,13 +55,23 @@ def aplicar_tema():
                 border-radius: 5px !important;
                 padding: 5px !important;
             }
-            /* Para os filtros de multiselect */
+            /* Para as opções dentro do selectbox */
+            [data-baseweb="select"] .dropdown-option {
+                color: #000000 !important;  /* Cor do texto das opções */
+                background-color: #ffffff !important;  /* Fundo branco */
+            }
+            /* Para o multiselect */
             .stMultiSelect div[data-baseweb="select"] {
                 background-color: #ffffff !important;
                 color: #000000 !important;
                 border: 1px solid #ccc !important;
                 border-radius: 5px !important;
                 padding: 5px !important;
+            }
+            /* Para as opções dentro do multiselect */
+            .stMultiSelect div[data-baseweb="select"] .dropdown-option {
+                color: #000000 !important;  /* Cor do texto das opções */
+                background-color: #ffffff !important;  /* Fundo branco */
             }
             /* Alterando o texto dos filtros */
             .stSelectbox label, .stMultiSelect label {
