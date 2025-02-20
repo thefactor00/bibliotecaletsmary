@@ -21,13 +21,25 @@ def aplicar_tema():
     st.markdown(
         """
         <style>
-            body { background-color: #ffffff !important; color: #000000 !important; }
-            .stMarkdown, h1, h2, p, div { color: #000000 !important; }
-            .stButton > button { background-color: #45d0c1; color: white; }
+            html, body, [data-testid="stAppViewContainer"], [data-testid="stHeader"], [data-testid="stSidebar"] {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+            }
+            h1, h2, h3, h4, h5, h6, p, div, span, label {
+                color: #000000 !important;
+            }
+            .stButton > button {
+                background-color: #45d0c1 !important;
+                color: white !important;
+                border-radius: 5px !important;
+                border: none !important;
+            }
         </style>
         """,
         unsafe_allow_html=True
     )
+
+aplicar_tema()
 
 aplicar_tema()
 
