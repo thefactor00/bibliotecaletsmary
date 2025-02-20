@@ -123,7 +123,7 @@ st.markdown('<h2>Aqui você encontra toda coleção da Leticia Ribeiro</h2>', un
 st.divider()
 
     # Carregar o DataFrame
-    df = pd.read_excel('dados - Copia.xlsx', sheet_name='TODOS OS VOLUMES')
+df = pd.read_excel('dados - Copia.xlsx', sheet_name='TODOS OS VOLUMES')
 
     # Filtros de pesquisa na mesma linha
     col1, col2, col3, col4 = st.columns(4)
