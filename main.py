@@ -62,6 +62,7 @@ def aplicar_tema():
     )
 
 aplicar_tema()
+
     # Captura o evento de pressionamento da tecla Enter
     if st.button("Entrar") or (usuario and senha and st.session_state.usuario and st.session_state.senha):
         if verificar_login(usuario, senha):
