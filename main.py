@@ -60,6 +60,16 @@ def aplicar_tema():
 
 aplicar_tema()
 
+/* Alterando a cor da caixa de seleção */
+select, input[type="checkbox"], input[type="radio"] {
+    background-color: #fff; /* Fundo branco */
+    color: #333; /* Cor do texto mais escura */
+}
+
+/* Alterando a cor do texto dos filtros */
+label {
+    color: #333; /* Cor do texto mais escura */
+}
 
 # Tela de Login
 if 'logado' not in st.session_state or not st.session_state.logado:
