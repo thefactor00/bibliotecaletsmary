@@ -17,7 +17,7 @@ def verificar_login(usuario, senha):
 # Configuração da página
 st.set_page_config(page_title="Lets Mary Biblioteca", page_icon="📚", layout="wide")
 
-# Aplicar tema branco fixo
+# # Aplicar tema branco fixo
 def aplicar_tema():
     st.markdown(
         """
@@ -35,8 +35,6 @@ def aplicar_tema():
                 border-radius: 5px !important;
                 border: none !important;
             }
-            /* Ajusta as caixas de entrada para fundo branco e texto preto */
-            input, textarea, select {
             /* Ajustando os inputs */
             input[type="text"], input[type="password"], textarea, select {
                 background-color: #ffffff !important;
