@@ -108,7 +108,6 @@ else:
     
     st.markdown('</div>', unsafe_allow_html=True)
 
-else:
     # Após o login bem-sucedido, mostra o conteúdo da página
 
     # Estilo CSS para deixar o front mais refinado
