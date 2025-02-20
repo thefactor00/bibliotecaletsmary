@@ -34,8 +34,8 @@ def aplicar_tema():
                 border-radius: 5px !important;
                 border: none !important;
             }
-            /* Ajusta as caixas de entrada para fundo branco e texto preto */
-            input, textarea, select {
+            /* Ajustando os inputs */
+            input[type="text"], input[type="password"], textarea, select {
                 background-color: #ffffff !important;
                 color: #000000 !important;
                 border: 1px solid #ccc !important;
@@ -45,12 +45,21 @@ def aplicar_tema():
             input::placeholder, textarea::placeholder {
                 color: #666 !important;
             }
+            /* Ajustando os dropdowns (multiselect) */
+            [data-baseweb="select"] > div {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                border: 1px solid #ccc !important;
+                border-radius: 5px !important;
+                padding: 5px !important;
+            }
         </style>
         """,
         unsafe_allow_html=True
     )
 
 aplicar_tema()
+
 
 # Tela de Login
 if 'logado' not in st.session_state or not st.session_state.logado:
